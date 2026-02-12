@@ -29,3 +29,28 @@ r.region_name
 from paizes p 
  join regiao r on 
 p.REGION_ID = r.REGION_ID;
+
+
+--3  No esquema Human Resources, criar uma view para listar os nomes de departamentos seguidos da cidade onde se localizam e o nome e telefone do gerente.
+
+create view Gerentes as 
+select 
+f.FIRST_NAME,
+f.PHONE_NUMBER,
+d.DEPARTMENT_NAME,
+l.city
+from FUNCIONARIOS f 
+inner join DEPARTAMENTO d on
+f.DEPARTMENT_ID = d.DEPARTMENT_ID 
+inner JOIN LOCALIDADES l on d.LOCATION_ID = l.LOCATION_ID;
+
+--4 No esquema Human Resources, criar uma view para listar os nomes dos funcionários e o título da função de cada um deles.
+create view FuncaoDeFuncionarios as
+select 
+f.First_name,
+j.job_title from FUNCIONARIOS f inner join 
+JOBS1 j on f.JOB_ID = j.job_id 
+
+--5No esquema Human Resources, criar uma view para listar os nomes dos funcionários, a data de início e fim que cada um permaneceu em uma determinada função e a função (exibir o título da função).
+
+
