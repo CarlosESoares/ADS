@@ -15,5 +15,6 @@ public class Principal {
 		}else {
 			System.out.println("SAldo insuficiente");
 		}
+		System.out.println("Novo Saldo: "+ conta.getSaldo());
 	}
 }
