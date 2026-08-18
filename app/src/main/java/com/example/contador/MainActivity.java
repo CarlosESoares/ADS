@@ -3,6 +3,7 @@ package com.example.contador;
 
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -11,11 +12,12 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.Random;
+
 public class MainActivity extends AppCompatActivity {
-    TextView textView;
-    TextView textView2;
-    Button bt;
-    int contador=0;
+
+    int numero =0;
+    Random r = new Random();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,22 +25,34 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
-        bt = findViewById(R.id.bt);
-        textView = findViewById(R.id.tv);
-        textView2 = findViewById(R.id.tv2);
+        EditText edmin,edmax;
+        edmin=findViewById(R.id.EdMin);
 
+        edmax=findViewById(R.id.EdMax);
+        Button bt = findViewById(R.id.bt);
+        TextView tv = findViewById(R.id.tv);
 
         bt.setOnClickListener( v->{
-            textView.setText("FRITAS!!:" +Integer.toString(contador));
-            contador +=1;
-            textView2.setText("BLÁ");
-        });
+            String smin = edmin.getText().toString();
+            String smax = edmax.getText().toString();
 
+            if (smin.isEmpty() ){
+                edmin.setError("Informe um inteiro");
+            } else if (smin.isEmpty()) {
+                edmax.setError("Informe um inteiro");
+            } else {
+                int min = Integer.parseInt(smin);
+                int max = Integer.parseInt(smax);
+                if (min > max){
+                    edmin.setError("Informe um número menor");
+                    edmax.setError("Informe um número maior");
+                }else {
+                    numero = r.nextInt(max - min + 1) + min;
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+                    tv.setText(Integer.toString(numero));
+                }
+            }
+
         });
     }
 }
