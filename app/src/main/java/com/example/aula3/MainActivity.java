@@ -1,6 +1,7 @@
 package com.example.aula3;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -22,42 +23,55 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
         Toast.makeText(this, "onCreate", Toast.LENGTH_LONG).show();
+        Log.d("Ciclo Da vida", "onCreate");
     }
 
     @Override
     protected void onStart() {
         super.onStart();
         Toast.makeText(this, "onStart", Toast.LENGTH_LONG).show();
+        Log.d("Ciclo Da vida", "onStart");
+
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         Toast.makeText(this, "onResume", Toast.LENGTH_LONG).show();
+        Log.d("Ciclo Da vida", "onResume");
+
     }
 
     @Override
     protected void onPause() {
         super.onPause();
         Toast.makeText(this, "onPause", Toast.LENGTH_LONG).show();
+        Log.d("Ciclo Da vida", "onPause");
+
     }
 
     @Override
     protected void onStop() {
         super.onStop();
         Toast.makeText(this, "onStop", Toast.LENGTH_LONG).show();
+        Log.d("Ciclo Da vida", "onStop");
+
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
         Toast.makeText(this, "onRestart", Toast.LENGTH_LONG).show();
+        Log.d("Ciclo Da vida", "onRestart");
+
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         Toast.makeText(this, "onDestroy", Toast.LENGTH_LONG).show();
+        Log.d("Ciclo Da vida", "onDestroy");
+
 
     }
 }
