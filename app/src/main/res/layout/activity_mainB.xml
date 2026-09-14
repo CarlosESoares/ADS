@@ -5,38 +5,28 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivityB">
 
-    <EditText
-        android:id="@+id/editLetra"
-        android:layout_width="250dp"
+    <TextView
+        android:id="@+id/textLetra"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Digite uma letra"
-        android:inputType="text"
+        android:text="Letra recebida:"
+        android:textSize="28sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="150dp" />
 
-    <EditText
-        android:id="@+id/editNumero"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:hint="Digite um número"
-        android:inputType="number"
-        app:layout_constraintTop_toBottomOf="@id/editLetra"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="20dp" />
-
-    <Button
-        android:id="@+id/buttonEnviar"
+    <TextView
+        android:id="@+id/textNumero"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enviar"
-        app:layout_constraintTop_toBottomOf="@id/editNumero"
+        android:text="Número recebido:"
+        android:textSize="28sp"
+        app:layout_constraintTop_toBottomOf="@id/textLetra"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="30dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

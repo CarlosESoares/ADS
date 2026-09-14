@@ -1,17 +1,14 @@
 package com.ifsc.app;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.EditText;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
-    int a = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,20 +16,23 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
-        TextView tv = findViewById(R.id.text);
-        Button bt = findViewById(R.id.button);
-        tv.setText("--");
-        bt.setText("Click aqui");
-        bt.setOnClickListener(view -> {
-            a++;
-            bt.setText("Ui");
-            tv.setText(Integer.toString(a));
-        });
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+        EditText editLetra = findViewById(R.id.editLetra);
+        EditText editNumero = findViewById(R.id.editNumero);
+        Button buttonEnviar = findViewById(R.id.buttonEnviar);
+
+        buttonEnviar.setOnClickListener(view -> {
+
+            String letra = editLetra.getText().toString();
+            String numero = editNumero.getText().toString();
+
+            Intent intentExplicita = new Intent(MainActivity.this, MainActivityB.class);
+            intentExplicita.putExtra("letra", letra);
+            startActivity(intentExplicita);
+
+
+            Intent intentImplicita = new Intent("ENVIAR_NUMERO");
+            intentImplicita.putExtra("numero", numero);
+            startActivity(intentImplicita);
         });
     }
-
 }
