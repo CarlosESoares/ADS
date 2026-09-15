@@ -1,9 +1,11 @@
 package com.example.app;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,10 +31,12 @@ public class MainActivity extends AppCompatActivity {
 
         });
         lv = findViewById(R.id.listview);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                                                                        android.R.layout.simple_list_item_1,
-                                                                                                            android.R.id.text1,nomes);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,R.layout.item_lista,R.id.tvNome,nomes);
         lv.setAdapter(adapter);
+        lv.setOnItemClickListener((parent, view, position, id) -> {
+            Toast.makeText(this,nomes[position],Toast.LENGTH_LONG).show();
+
+        });
 
     }
 }
